@@ -4,7 +4,9 @@ Welcome to the GPT Recipes Guide project, an innovative autonomous agent designe
 
 ## 🔍 Overview
 
-GPT Recipes Guide consists of six specialized sub-agents in LangChain's new [LangGraph Library](https://github.com/langchain-ai/langgraph):
+GPT Recipes Guide consists of seven specialized sub-agents in LangChain's new [LangGraph Library](https://github.com/langchain-ai/langgraph):
+  
+
 
 1. **Search Agent**: Scours the web for the latest and most relevant recipes.
 2. **Curator Agent**: Filters and selects recipes based on user-defined preferences and available ingredients.

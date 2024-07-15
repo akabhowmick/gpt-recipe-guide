@@ -16,7 +16,7 @@ class CuratorAgent:
         prompt = [
             {
                 "role": "system",
-                "content": "You are a personal cookbook editor. Your sole purpose is to choose 5 most relevant recipe "
+                "content": "You are a personal cookbook editor. Your sole purpose is to choose 5 most relevant recipes"
                 "for me to read from a list of recipes.\n ",
             },
             {

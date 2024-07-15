@@ -8,22 +8,6 @@ recipe_templates = {
         <p>{{summary}}</p>
     </div>
     """,
-    "layout_2.html": """
-    <div class="recipe">
-        <img src="{{image}}" alt="recipe Image">
-        <div>
-            <a href="{{path}}" target="_blank"><h2>{{title}}</h2></a>
-            <p>{{summary}}</p>
-        </div>
-    </div>
-    """,
-    "layout_3.html": """
-    <div class="recipe">
-        <a href="{{path}}" target="_blank"><h2>{{title}}</h2></a>
-        <img src="{{image}}" alt="recipe Image">
-        <p>{{summary}}</p>
-    </div>
-    """,
 }
 
 
