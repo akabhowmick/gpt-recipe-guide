@@ -61,6 +61,11 @@ Enjoy discovering new and exciting recipes with GPT Recipes Guide!
    ```sh
     python app.py
    ```
+   or ```sh
+   python3 app.py
+   ```
+
+   ```
 5. Open the app in your browser
    ```sh
     http://localhost:5000/

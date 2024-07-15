@@ -4,7 +4,15 @@ from concurrent.futures import ThreadPoolExecutor
 from langgraph.graph import Graph
 
 # Import agent classes
-from .agents import SearchAgent, CuratorAgent, WriterAgent, DesignerAgent, EditorAgent, PublisherAgent, CritiqueAgent
+from .agents import (
+    SearchAgent,
+    CuratorAgent,
+    WriterAgent,
+    DesignerAgent,
+    EditorAgent,
+    PublisherAgent,
+    CritiqueAgent,
+)
 
 
 class MasterAgent:
@@ -33,12 +41,14 @@ class MasterAgent:
         workflow.add_node("design", designer_agent.run)
 
         # Set up edges
-        workflow.add_edge('search', 'curate')
-        workflow.add_edge('curate', 'write')
-        workflow.add_edge('write', 'critique')
-        workflow.add_conditional_edges(start_key='critique',
-                                       condition=lambda x: "accept" if x['critique'] is None else "revise",
-                                       conditional_edge_mapping={"accept": "design", "revise": "write"})
+        workflow.add_edge("search", "curate")
+        workflow.add_edge("curate", "write")
+        workflow.add_edge("write", "critique")
+        workflow.add_conditional_edges(
+            start_key="critique",
+            condition=lambda x: "accept" if x["critique"] is None else "revise",
+            conditional_edge_mapping={"accept": "design", "revise": "write"},
+        )
 
         # set up start and end nodes
         workflow.set_entry_point("search")
@@ -49,10 +59,12 @@ class MasterAgent:
 
         # Execute the graph for each query in parallel
         with ThreadPoolExecutor() as executor:
-            parallel_results = list(executor.map(lambda q: chain.invoke({"query": q}), queries))
+            parallel_results = list(
+                executor.map(lambda q: chain.invoke({"query": q}), queries)
+            )
 
-        # Compile the final newspaper
-        newspaper_html = editor_agent.run(parallel_results)
-        newspaper_path = publisher_agent.run(newspaper_html)
+        # Compile the final recipes list
+        recipes_html = editor_agent.run(parallel_results)
+        recipes_path = publisher_agent.run(recipes_html)
 
-        return newspaper_path
+        return recipes_path

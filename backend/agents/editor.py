@@ -1,16 +1,16 @@
 import os
 
-article_templates = {
+recipe_templates = {
     "layout_1.html": """
-    <div class="article">
+    <div class="recipe">
         <a href="{{path}}" target="_blank"><h2>{{title}}</h2></a>
-        <img src="{{image}}" alt="Article Image">
+        <img src="{{image}}" alt="recipe Image">
         <p>{{summary}}</p>
     </div>
     """,
     "layout_2.html": """
-    <div class="article">
-        <img src="{{image}}" alt="Article Image">
+    <div class="recipe">
+        <img src="{{image}}" alt="recipe Image">
         <div>
             <a href="{{path}}" target="_blank"><h2>{{title}}</h2></a>
             <p>{{summary}}</p>
@@ -18,43 +18,51 @@ article_templates = {
     </div>
     """,
     "layout_3.html": """
-    <div class="article">
+    <div class="recipe">
         <a href="{{path}}" target="_blank"><h2>{{title}}</h2></a>
-        <img src="{{image}}" alt="Article Image">
+        <img src="{{image}}" alt="recipe Image">
         <p>{{summary}}</p>
     </div>
     """,
 }
+
 
 class EditorAgent:
     def __init__(self, layout):
         self.layout = layout
 
     def load_html_template(self):
-        template_path = os.path.join(os.path.dirname(__file__), '..', 'templates', 'newspaper', 'layouts', self.layout)
+        template_path = os.path.join(
+            os.path.dirname(__file__),
+            "..",
+            "templates",
+            "recipes",
+            "layouts",
+            self.layout,
+        )
         with open(template_path) as f:
             return f.read()
 
-    def editor(self, articles):
+    def editor(self, recipes):
         html_template = self.load_html_template()
 
-        # Article template
-        article_template = article_templates[self.layout]
+        # recipe template
+        recipe_template = recipe_templates[self.layout]
 
-        # Generate articles HTML
-        articles_html = ""
-        for article in articles:
-            article_html = article_template.replace("{{title}}", article["title"])
-            article_html = article_html.replace("{{image}}", article["image"])
-            article_html = article_html.replace("{{summary}}", article["summary"])
-            article_html = article_html.replace("{{path}}", article["path"])
-            articles_html += article_html
+        # Generate recipes HTML
+        recipes_html = ""
+        for recipe in recipes:
+            recipe_html = recipe_template.replace("{{title}}", recipe["title"])
+            recipe_html = recipe_html.replace("{{image}}", recipe["image"])
+            recipe_html = recipe_html.replace("{{summary}}", recipe["summary"])
+            recipe_html = recipe_html.replace("{{path}}", recipe["path"])
+            recipes_html += recipe_html
 
         # Replace placeholders in template
-        html_template = html_template.replace("{{date}}", articles[0]["date"])
-        newspaper_html = html_template.replace("{{articles}}", articles_html)
-        return newspaper_html
+        html_template = html_template.replace("{{date}}", recipes[0]["date"])
+        cookbook_html = html_template.replace("{{recipes}}", recipes_html)
+        return cookbook_html
 
-    def run(self, articles):
-        res = self.editor(articles)
+    def run(self, recipes):
+        res = self.editor(recipes)
         return res

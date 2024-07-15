@@ -1,10 +1,10 @@
 import os
 import re
 
+
 class DesignerAgent:
     def __init__(self, output_dir):
         self.output_dir = output_dir
-
 
     def load_html_template(self):
         relative_path = "../templates/article/index.html"
@@ -24,17 +24,19 @@ class DesignerAgent:
         html_template = html_template.replace("{{image}}", image)
         html_template = html_template.replace("{{date}}", date)
         for i in range(5):
-            html_template = html_template.replace(f"{{paragraph{i + 1}}}", paragraphs[i])
+            html_template = html_template.replace(
+                f"{{paragraph{i + 1}}}", paragraphs[i]
+            )
         article["html"] = html_template
         article = self.save_article_html(article)
         return article
 
     def save_article_html(self, article):
-        filename = re.sub(r'[\/:*?"<>| ]', '_', article['query'])
+        filename = re.sub(r'[\/:*?"<>| ]', "_", article["query"])
         filename = f"{filename}.html"
         path = os.path.join(self.output_dir, filename)
-        with open(path, 'w') as file:
-            file.write(article['html'])
+        with open(path, "w") as file:
+            file.write(article["html"])
         article["path"] = filename
         return article
 
