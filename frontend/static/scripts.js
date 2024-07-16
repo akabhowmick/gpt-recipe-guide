@@ -8,10 +8,10 @@ function selectLayout(event) {
   selectedLayout = event.target.getAttribute("data-layout");
 }
 
-function produceRecipe() {
+function produceCookBook() {
   var topics = [];
   for (var i = 1; i <= topicCount; i++) {
-    var topic = document.getElementById("topic" + i).value.trim();
+    var topic = document.getElementById("recipe" + i).value.trim();
     if (topic) {
       topics.push(topic);
     }
@@ -78,7 +78,7 @@ function toggleLoading(isLoading) {
 let topicCount = 1;
 
 window.addEventListener("DOMContentLoaded", (event) => {
-  document.getElementById("produceRecipe").addEventListener("click", produceRecipe);
+  document.getElementById("produceCookbook").addEventListener("click", produceCookbook);
   document.querySelectorAll(".layout-icon").forEach((icon) => {
     icon.addEventListener("click", selectLayout);
   });

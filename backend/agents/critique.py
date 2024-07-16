@@ -20,7 +20,7 @@ class CritiqueAgent:
                 f"{str(recipe)}\n"
                 f"Your task is to provide a really short feedback on the recipe only if necessary.\n"
                 f"if you think the recipe is good, please return None.\n"
-                f"if you noticed the field 'message' in the recipe, it means the writer has revised the article"
+                f"if you noticed the field 'message' in the recipe, it means the writer has revised the recipe"
                 f"based on your previous critique. you can provide feedback on the revised recipe or just "
                 f"return None if you think the recipe is good.\n"
                 f"Please return a string of your critique or None.\n",
@@ -36,6 +36,6 @@ class CritiqueAgent:
             print(f"Feedback: {response}\n")
             return {"critique": response, "message": None}
 
-    def run(self, article: dict):
-        article.update(self.critique(article))
-        return article
+    def run(self, recipe: dict):
+        recipe.update(self.critique(recipe))
+        return recipe
