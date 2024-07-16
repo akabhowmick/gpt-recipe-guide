@@ -5,27 +5,27 @@ import json5 as json
 
 sample_json = """
 {
-  "title": title of the article,
+  "title": title of the recipe,
   "date": today's date,
-  "paragraphs": [
-    "paragraph 1",
-    "paragraph 2",
-    "paragraph 3",
-    "paragraph 4",
-    "paragraph 5",
+  "steps": [
+    "step 1",
+    "step 2",
+    "step 3",
+    "step 4",
+    "step 5",
     ],
-    "summary": "2 sentences summary of the article"
+    "summary": "2 sentences summary of the recipe"
 }
 """
 
 sample_revise_json = """
 {
-    "paragraphs": [
-        "paragraph 1",
-        "paragraph 2",
-        "paragraph 3",
-        "paragraph 4",
-        "paragraph 5",
+    "steps": [
+        "step 1",
+        "step 2",
+        "step 3",
+        "step 4",
+        "step 5",
     ],
     "message": "message to the critique"
 }
@@ -41,15 +41,15 @@ class WriterAgent:
         prompt = [
             {
                 "role": "system",
-                "content": "You are a cookbook writer. Your sole purpose is to write a well-written article about a "
-                "topic using a list of articles.\n ",
+                "content": "You are a cookbook writer. Your sole purpose is to write a well-written recipe using a list of ingredients, a cuisine and  "
+                "a preferred amount of cooking time.\n ",
             },
             {
                 "role": "user",
                 "content": f"Today's date is {datetime.now().strftime('%d/%m/%Y')}\n."
                 f"Query or Topic: {query}"
                 f"{sources}\n"
-                f"Your task is to write a critically acclaimed article for me about the provided query or "
+                f"Your task is to write a critically acclaimed recipe for me about the provided query or "
                 f"topic based on the sources.\n "
                 f"Please return nothing but a JSON in the following format:\n"
                 f"{sample_json}\n ",
@@ -68,18 +68,18 @@ class WriterAgent:
         )
         return json.loads(response)
 
-    def revise(self, article: dict):
+    def revise(self, recipe: dict):
         prompt = [
             {
                 "role": "system",
-                "content": "You are a cookbook editor. Your sole purpose is to edit a well-written article about a "
-                "topic based on given critique\n ",
+                "content": "You are a cookbook editor. Your sole purpose is to edit a well-written recipe about a "
+                "recipe based on given critique\n ",
             },
             {
                 "role": "user",
-                "content": f"{str(article)}\n"
-                f"Your task is to edit the article based on the critique given.\n "
-                f"Please return json format of the 'paragraphs' and a new 'message' field"
+                "content": f"{str(recipe)}\n"
+                f"Your task is to edit the recipe based on the critique given.\n "
+                f"Please return json format of the 'steps' and a new 'message' field"
                 f"to the critique that explain your changes or why you didn't change anything.\n"
                 f"please return nothing but a JSON in the following format:\n"
                 f"{sample_revise_json}\n ",
@@ -97,14 +97,14 @@ class WriterAgent:
             .content
         )
         response = json.loads(response)
-        print(f"For article: {article['title']}")
+        print(f"For recipe: {recipe['title']}")
         print(f"Writer Revision Message: {response['message']}\n")
         return response
 
-    def run(self, article: dict):
-        critique = article.get("critique")
+    def run(self, recipe: dict):
+        critique = recipe.get("critique")
         if critique is not None:
-            article.update(self.revise(article))
+            recipe.update(self.revise(recipe))
         else:
-            article.update(self.writer(article["query"], article["sources"]))
-        return article
+            recipe.update(self.writer(recipe["query"], recipe["sources"]))
+        return recipe

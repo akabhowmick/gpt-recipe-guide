@@ -39,11 +39,11 @@ body {
   margin: 0 auto 20px;
 }
 
-.article {
+.recipe {
   margin-bottom: 20px;
 }
 
-.article .paragraph {
+.recipe .step {
   margin-bottom: 15px;
 }
 

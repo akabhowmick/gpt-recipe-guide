@@ -1,5 +1,4 @@
 import os
-# Todo: Think about whether or not cookbook or recipe here
 
 class PublisherAgent:
     def __init__(self, output_dir):

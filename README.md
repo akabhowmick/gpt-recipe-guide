@@ -5,8 +5,6 @@ Welcome to the GPT Recipes Guide project, an innovative autonomous agent designe
 ## 🔍 Overview
 
 GPT Recipes Guide consists of seven specialized sub-agents in LangChain's new [LangGraph Library](https://github.com/langchain-ai/langgraph):
-  
-
 
 1. **Search Agent**: Scours the web for the latest and most relevant recipes.
 2. **Curator Agent**: Filters and selects recipes based on user-defined preferences and available ingredients.
@@ -60,16 +58,24 @@ Enjoy discovering new and exciting recipes with GPT Recipes Guide!
    pip install -r requirements.txt
    ```
 4. Run the app
+
    ```sh
     python app.py
    ```
+
    or ```sh
    python3 app.py
+
    ```
 
    ```
+
 5. Open the app in your browser
    ```sh
     http://localhost:5000/
    ```
 6. Enjoy!
+
+<!-- Todo
+1. Update script js so it includes the two inputs
+ -->

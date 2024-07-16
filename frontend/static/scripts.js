@@ -1,13 +1,5 @@
 let selectedLayout = "layout_1.html"; // Default layout
 
-function selectLayout(event) {
-  document.querySelectorAll(".layout-icon").forEach((icon) => {
-    icon.classList.remove("selected");
-  });
-  event.target.classList.add("selected");
-  selectedLayout = event.target.getAttribute("data-layout");
-}
-
 function produceCookBook() {
   var topics = [];
   for (var i = 1; i <= topicCount; i++) {
@@ -48,22 +40,22 @@ function produceCookBook() {
 
 function toggleLoading(isLoading) {
   const loadingSection = document.getElementById("loading");
-  const loadingMessages = document.getElementById("loadingMessages");
+  const loadingRecipes = document.getElementById("loadingRecipes");
   const messages = [
     "Looking for recipes...",
     "Curating recipes...",
     "Writing recipes...",
     "Editing final recipes...",
   ];
-  loadingMessages.style.fontFamily = "'Gill Sans', sans-serif";
+  loadingRecipes.style.fontFamily = "'Gill Sans', sans-serif";
   if (isLoading) {
     loadingSection.classList.remove("hidden");
     let messageIndex = 0;
-    loadingMessages.textContent = messages[messageIndex];
+    loadingRecipes.textContent = messages[messageIndex];
     const interval = setInterval(() => {
       if (messageIndex < messages.length - 1) {
         messageIndex++;
-        loadingMessages.textContent = messages[messageIndex];
+        loadingRecipes.textContent = messages[messageIndex];
       } else {
         clearInterval(interval);
       }
@@ -82,62 +74,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelectorAll(".layout-icon").forEach((icon) => {
     icon.addEventListener("click", selectLayout);
   });
-  addIconToLastTopic();
 });
-
-function addIconToLastTopic() {
-  // Remove icons from all topics
-  document.querySelectorAll(".add-topic, .remove-topic").forEach((icon) => {
-    icon.remove();
-  });
-
-  // Add icons to the last topic only
-  const lastTopic = document.getElementById("topicGroup" + topicCount);
-  if (lastTopic) {
-    const addIcon = document.createElement("span");
-    addIcon.className = "icon add-topic";
-    addIcon.textContent = "+";
-    addIcon.addEventListener("click", addTopicField);
-    lastTopic.appendChild(addIcon);
-
-    if (topicCount > 1) {
-      const removeIcon = document.createElement("span");
-      removeIcon.className = "icon remove-topic";
-      removeIcon.textContent = "-";
-      removeIcon.addEventListener("click", removeTopicField);
-      lastTopic.appendChild(removeIcon);
-    }
-  }
-}
-
-function addTopicField() {
-  topicCount++;
-  const formGroup = document.createElement("div");
-  formGroup.className = "form-group";
-  formGroup.id = "topicGroup" + topicCount;
-
-  const inputElement = document.createElement("input");
-  inputElement.type = "text";
-  inputElement.id = "topic" + topicCount;
-  inputElement.name = "topic" + topicCount;
-  inputElement.className = "inputText";
-  inputElement.required = true;
-
-  formGroup.appendChild(inputElement);
-
-  document.getElementById("topicForm").appendChild(formGroup);
-
-  addIconToLastTopic();
-}
-
-function removeTopicField(event) {
-  const topicGroup = event.target.parentElement;
-  if (topicGroup && topicGroup.id !== "topicGroup1") {
-    topicGroup.remove();
-    topicCount--;
-    addIconToLastTopic();
-  }
-}
 
 function displayRecipe(data) {
   if (data.path) {

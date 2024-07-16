@@ -62,32 +62,15 @@ header {
 }
 
 .header-content {
-  font-family: "Chomsky", sans-serif;
+  font-family: "Gill Sans", sans-serif;
   font-size: 32px;
   color: #eeeeef;
-}
-
-.powered-by {
-  position: absolute;
-  bottom: 37px;
-  right: 310px;
-  font-size: 14px;
-  color: #cbd5e0;
 }
 
 .header-content {
   opacity: 0;
   animation: fadeIn 2s ease-in forwards;
   position: relative; /* Add this line */
-}
-
-.powered-by a {
-  color: #0056b3;
-  text-decoration: none;
-}
-
-.powered-by a:hover {
-  text-decoration: underline;
 }
 
 .topics-interest {

@@ -9,7 +9,7 @@ def index():
     return jsonify({"status": "Running"}), 200
 
 
-@backend_app.route("/generate_recipes", methods=["POST"])
+@backend_app.route("/generate_cookbook", methods=["POST"])
 def generate_recipes():
     data = request.json
     master_agent = MasterAgent()

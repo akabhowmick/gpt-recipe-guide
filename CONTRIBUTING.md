@@ -10,8 +10,8 @@ If you come across any issue or have an idea for an improvement, don't hesitate 
 
 ## Contributing Code
 
-1. **Fork the repository and create your branch from `master`.**
-   If it's not an urgent bug fix, you should branch from `master` and work on the feature or fix in there.
+1. **Fork the repository and create your branch from `main`.**
+   If it's not an urgent bug fix, you should branch from `main` and work on the feature or fix in there.
 
 2. **Conduct your changes.**
    Make your changes following best practices for coding in the project's language.

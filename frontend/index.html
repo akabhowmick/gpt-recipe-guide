@@ -13,24 +13,31 @@
         <div class="header-content">
           <h1>Gpt Cookbook</h1>
         </div>
-        <p class="powered-by">Powered by <a href="https://tavily.com" target="_blank">Tavily</a></p>
-        <p class="topics-interest">
-          Type your current grocery items and get your personalized recipe list.
-        </p>
       </header>
-
-      <!-- //! Only display going one direction -->
       <section class="topic-selection">
         <form id="topicForm">
           <div class="form-group" id="topicGroup1">
+            <p class="topics-interest">
+              Type your current grocery items and get your personalized recipe list.
+            </p>
             <input class="inputText" type="text" id="topic1" name="topic1" required />
+          </div>
+          <div class="form-group" id="topicGroup1">
+            <p class="topics-interest">Enter any cuisine(s) you are interested in</p>
+            <input class="inputText" type="text" id="topic2" name="topic2" />
+          </div>
+          <div class="form-group" id="topicGroup1">
+            <p class="topics-interest">
+              Enter the amount of time you would ideally like to spend cooking
+            </p>
+            <input class="inputText" type="text" id="topic3" name="topic3" />
           </div>
         </form>
         <button type="button" id="produceCookbook">Produce Cookbook</button>
       </section>
       <section id="loading" class="hidden">
         <div class="spinner"></div>
-        <div id="loadingMessages"></div>
+        <div id="loadingRecipes"></div>
       </section>
       <section id="recipes" class="hidden"></section>
     </div>

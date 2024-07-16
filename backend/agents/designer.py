@@ -19,13 +19,13 @@ class DesignerAgent:
         title = recipe["title"]
         date = recipe["date"]
         image = recipe["image"]
-        paragraphs = recipe["paragraphs"]
+        steps = recipe["steps"]
         html_template = html_template.replace("{{title}}", title)
         html_template = html_template.replace("{{image}}", image)
         html_template = html_template.replace("{{date}}", date)
         for i in range(5):
             html_template = html_template.replace(
-                f"{{paragraph{i + 1}}}", paragraphs[i]
+                f"{{step{i + 1}}}", steps[i]
             )
         recipe["html"] = html_template
         recipe = self.save_recipe_html(recipe)
