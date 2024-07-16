@@ -73,12 +73,14 @@ header {
   position: relative; /* Add this line */
 }
 
-.topics-interest {
+.ingredients-list,
+.cuisine-list,
+.cook-time {
   font-family: "Gill Sans", sans-serif;
   font-size: 17px;
 }
 
-.topics {
+.topicsForm {
   font-family: "Gill Sans", sans-serif;
 }
 
@@ -91,7 +93,7 @@ header {
   text-decoration: underline;
 }
 
-.topic-selection {
+.cookbook-selection {
   display: flex;
   justify-content: center;
   align-items: center;

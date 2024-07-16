@@ -1,26 +1,23 @@
 let selectedLayout = "layout_1.html"; // Default layout
 
 function produceCookBook() {
-  var topics = [];
-  for (var i = 1; i <= topicCount; i++) {
-    var topic = document.getElementById("recipe" + i).value.trim();
-    if (topic) {
-      topics.push(topic);
-    }
-  }
+  var ingredientList = document.getElementById("ingredients-list").value.split(",");
+  var cuisines = document.getElementById("cuisine-list").value.split(",");
+  var desiredCookingTime = parseInt(document.getElementById("cook-time").value, 10);
 
-  if (topics.length === 0) {
-    alert("Please fill in at least one topic.");
+  if (ingredientList.length === 0) {
+    alert("Please fill in at least one ingredient.");
     return;
   }
   toggleLoading(true);
-
   const payload = {
-    topics: topics,
+    ingredientList: ingredientList,
+    cuisines: cuisines,
+    desiredCookingTime: desiredCookingTime,
     layout: selectedLayout,
   };
 
-  fetch("http://localhost:8000/generate_recipe", {
+  fetch("http://localhost:8000/generate_cookbook", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

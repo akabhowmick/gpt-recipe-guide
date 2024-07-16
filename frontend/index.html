@@ -14,23 +14,23 @@
           <h1>Gpt Cookbook</h1>
         </div>
       </header>
-      <section class="topic-selection">
+      <section class="cookbook-selection">
         <form id="topicForm">
           <div class="form-group" id="topicGroup1">
-            <p class="topics-interest">
-              Type your current grocery items and get your personalized recipe list.
+            <p class="ingredients-list">
+              Type your current grocery items (comma separated) and get your personalized recipe list.
             </p>
-            <input class="inputText" type="text" id="topic1" name="topic1" required />
+            <input class="inputText" type="text" id="ingredients-list" name="topic1" required />
           </div>
-          <div class="form-group" id="topicGroup1">
-            <p class="topics-interest">Enter any cuisine(s) you are interested in</p>
-            <input class="inputText" type="text" id="topic2" name="topic2" />
+          <div class="form-group" id="topicGroup2">
+            <p class="cuisine-list">Enter any cuisine(s) you are interested in</p>
+            <input class="inputText" type="text" id="cuisine-list" name="topic2" />
           </div>
-          <div class="form-group" id="topicGroup1">
-            <p class="topics-interest">
+          <div class="form-group" id="topicGroup3">
+            <p class="cook-time">
               Enter the amount of time you would ideally like to spend cooking
             </p>
-            <input class="inputText" type="text" id="topic3" name="topic3" />
+            <input class="inputText" type="text" id="cook-time" name="topic3" />
           </div>
         </form>
         <button type="button" id="produceCookbook">Produce Cookbook</button>
