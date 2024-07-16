@@ -64,8 +64,6 @@ function toggleLoading(isLoading) {
   }
 }
 
-let topicCount = 1;
-
 window.addEventListener("DOMContentLoaded", (event) => {
   document.getElementById("produceCookbook").addEventListener("click", produceCookbook);
   document.querySelectorAll(".layout-icon").forEach((icon) => {

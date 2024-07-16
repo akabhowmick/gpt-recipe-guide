@@ -13,5 +13,10 @@ def index():
 def generate_recipes():
     data = request.json
     master_agent = MasterAgent()
-    recipes = master_agent.run(data["topics"], data["layout"])
+    recipes = master_agent.run(
+        data["ingredientList"],
+        data["cuisines"],
+        data["desiredCookingTime"],
+        data["layout"],
+    )
     return jsonify({"path": recipes}), 200

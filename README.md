@@ -76,6 +76,3 @@ Enjoy discovering new and exciting recipes with GPT Recipes Guide!
    ```
 6. Enjoy!
 
-<!-- Todo
-1. Update script js so it includes the two inputs
- -->

@@ -49,8 +49,8 @@ class WriterAgent:
                 "content": f"Today's date is {datetime.now().strftime('%d/%m/%Y')}\n."
                 f"Query or Topic: {query}"
                 f"{sources}\n"
-                f"Your task is to write a critically acclaimed recipe for me about the provided query or "
-                f"topic based on the sources.\n "
+                f"Your task is to write a critically acclaimed recipe for me using the ingredients list, preferred cuisines and"
+                f"desired cooking times based on the sources.\n "
                 f"Please return nothing but a JSON in the following format:\n"
                 f"{sample_json}\n ",
             },
