@@ -6,7 +6,7 @@ from langgraph.graph import Graph
 # Import agent classes
 from .agents import (
     SearchAgent,
-    CuratorAgent,
+    PickerAgent,
     WriterAgent,
     DesignerAgent,
     EditorAgent,
@@ -23,7 +23,7 @@ class MasterAgent:
     def run(self, queries: list, layout: str):
         # Initialize agents
         search_agent = SearchAgent()
-        curator_agent = CuratorAgent()
+        picker_agent = PickerAgent()
         writer_agent = WriterAgent()
         critique_agent = CritiqueAgent()
         designer_agent = DesignerAgent(self.output_dir)
@@ -35,7 +35,7 @@ class MasterAgent:
 
         # Add nodes for each agent
         workflow.add_node("search", search_agent.run)
-        workflow.add_node("curate", curator_agent.run)
+        workflow.add_node("curate", picker_agent.run)
         workflow.add_node("write", writer_agent.run)
         workflow.add_node("critique", critique_agent.run)
         workflow.add_node("design", designer_agent.run)

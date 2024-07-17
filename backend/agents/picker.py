@@ -5,7 +5,7 @@ from langchain_openai import ChatOpenAI
 
 model = "gpt-4-0125-preview"
 
-class CuratorAgent:
+class PickerAgent:
     def __init__(self):
         pass
 
@@ -18,7 +18,7 @@ class CuratorAgent:
         prompt = [
             {
                 "role": "system",
-                "content": "You are a personal cookbook editor. Your sole purpose is to choose 5 most relevant recipes"
+                "content": "You are a personal cookbook picker. Your sole purpose is to choose 5 most relevant recipes"
                 "for me to read from a list of recipes.\n ",
             },
             {
